@@ -9,3 +9,10 @@
 5.times do |number|
   Post.create(title: "タイトル#{number}", body: "本文#{number}")
 end
+
+User.create(
+  name: 'test',
+  email: 'test@example.com',
+  password: 'test',
+  password_confirmation: 'test'
+)
