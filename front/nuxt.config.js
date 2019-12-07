@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    'plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -39,8 +40,15 @@ export default {
   */
   modules: [
     // Doc: https://bootstrap-vue.js.org
+    '@nuxtjs/axios',
     'bootstrap-vue/nuxt',
   ],
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': { target: 'http://back:3000', pathRewrite: { '^/api/': '/' } }
+  },
   /*
   ** Build configuration
   */
