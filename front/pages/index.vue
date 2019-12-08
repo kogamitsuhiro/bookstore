@@ -7,6 +7,7 @@
       </h1>
       <nuxt-link to="/login">ログイン画面へ</nuxt-link>
       <p v-if="loggedIn" @click="logout()">Logout</p>
+      <p v-if="loggedIn">{{ loginUserName }}さんこんにちは</p>
     </div>
   </div>
 </template>
@@ -21,6 +22,9 @@ export default {
   computed: {
     loggedIn() {
       return this.$auth.loggedIn
+    },
+    loginUserName() {
+      return this.$auth.user.name
     }
   },
   methods: {
