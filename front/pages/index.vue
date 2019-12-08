@@ -5,25 +5,8 @@
       <h1 class="title">
         sample_app
       </h1>
-      <h2 class="subtitle">
-        
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <nuxt-link to="/login">ログイン画面へ</nuxt-link>
+      <p v-if="loggedIn" @click="logout()">Logout</p>
     </div>
   </div>
 </template>
@@ -34,6 +17,21 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  computed: {
+    loggedIn() {
+      return this.$auth.loggedIn
+    }
+  },
+  methods: {
+    async logout() {
+      try {
+        await this.$auth.logout()
+        this.$router.push('/login')
+      } catch (e) {
+        console.log(e)
+      }
+    }
   }
 }
 </script>

@@ -41,6 +41,7 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     'bootstrap-vue/nuxt',
   ],
   axios: {
@@ -48,6 +49,20 @@ export default {
   },
   proxy: {
     '/api/': { target: 'http://back:3000', pathRewrite: { '^/api/': '/' } }
+  },
+  /*
+  ** Auth configuration
+  */
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/user_token', method: 'post', propertyName: 'token' },
+          user: false,
+          logout: false
+        }
+      }
+    }
   },
   /*
   ** Build configuration
