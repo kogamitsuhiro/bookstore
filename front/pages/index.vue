@@ -5,9 +5,18 @@
       <h1 class="title">
         sample_app
       </h1>
-      <nuxt-link to="/login">ログイン画面へ</nuxt-link>
-      <p v-if="loggedIn" @click="logout()">Logout</p>
-      <p v-if="loggedIn">{{ loginUserName }}さんこんにちは</p>
+      <nuxt-link to="/login">
+        ログイン画面へ
+      </nuxt-link>
+      <p
+        v-if="loggedIn"
+        @click="logout()"
+      >
+        Logout
+      </p>
+      <p v-if="loggedIn">
+        {{ loginUserName }}さんこんにちは
+      </p>
     </div>
   </div>
 </template>

@@ -1,3 +1,5 @@
 <template>
-	<footer class="footer">© koga mitsuhiro</footer>
+  <footer class="footer">
+    © koga mitsuhiro
+  </footer>
 </template>

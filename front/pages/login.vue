@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>ログイン画面</h1>
-    <button @click="login">ログインする</button>
+    <button @click="login">
+      ログインする
+    </button>
   </div>
 </template>
 
