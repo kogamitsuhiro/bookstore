@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="wrapper">
     <Header />
     <main class="contents">
       <nuxt />
@@ -18,3 +18,11 @@
   }
 }
 </script>
+<style lang="scss" scoped>
+#wrapper {
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+  padding: 65px 0 32px;
+}
+</style>

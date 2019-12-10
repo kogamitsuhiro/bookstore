@@ -12,6 +12,9 @@
 </template>
 <style lang="scss" scoped>
 header {
+  position: absolute;
+  top: 0;
+  width: 100%;
   background-color: $color-white;
   border-bottom: 1px solid $color-white-2;
   box-shadow: 0 0 1px rgba(34,34,34,.08);
