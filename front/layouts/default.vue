@@ -25,4 +25,8 @@
   box-sizing: border-box;
   padding: 65px 0 32px;
 }
+.contents {
+  max-width: 840px;
+  margin: 40px auto;
+}
 </style>

@@ -3,7 +3,7 @@
     <div class="footer-inner">
       mini book store All Rights Reserved.
     </div>
-</footer>
+  </footer>
 </template>
 <style lang="scss" scoped>
 footer {
