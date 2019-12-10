@@ -25,8 +25,15 @@ export default {
   ** Global CSS
   */
   css: [
-    'reset-css', 
+    'reset-css',
+    '~/assets/scss/style.scss'
   ],
+  styleResources: {
+    scss: [
+      '~assets/scss/_variables.scss',
+      '~assets/scss/_mixins.scss'
+    ]
+  },
   /*
   ** Plugins to load before mounting the App
   */
@@ -46,6 +53,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     'bootstrap-vue/nuxt',
+    '@nuxtjs/style-resources'
   ],
   axios: {
     proxy: true
