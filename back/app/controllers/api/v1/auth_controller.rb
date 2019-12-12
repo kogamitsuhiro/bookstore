@@ -1,13 +1,28 @@
 module Api
   module V1
     class AuthController < ApplicationController
-      before_action :authenticate_user, only: [:login]
+      before_action :authenticate_user, except: [:create, :logout]
 
       def login
         render json: {status: 200, user: response_fields(current_user.to_json) }
       end
 
       def create
+        @user = User.new(users_params)
+
+        if @user.name.blank? || @user.email.blank? || @user.password.blank?
+          response_bad_request
+        else
+          if User.exists?(email: @user.email)
+            response_conflict(:user)
+          else
+            if @user.save
+              response_success(:user, :create)
+            else
+              response_internal_server_error
+            end
+          end
+        end
       end
 
       def logout
@@ -15,8 +30,8 @@ module Api
       end
 
       private
-      def login_params
-        params.permit(:name, :email)
+      def users_params
+        params.permit(:name, :email, :password, :password_confirmation)
       end
 
       def response_fields(user_json)
