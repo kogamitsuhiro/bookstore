@@ -10,7 +10,20 @@ module Api
 
       def show
         @user = User.find(@post.user_id)
-        render json: {post: @post, user: @user }
+        @categories = @post.posts_category.map do |posts_category|
+          posts_category.category.name
+        end
+
+        render json: {
+          post: @post,
+          user: @user,
+          categories: @categories
+        }
+      end
+
+      def new
+        @post = Post.new
+        @post.posts_categories.build
       end
 
       def create
@@ -42,7 +55,7 @@ module Api
       end
 
       def post_params
-        params.require(:admin_post).permit(:title, :body)
+        params.require(:admin_post).permit(:title, :body, { :category_ids => [] })
       end
 
     end

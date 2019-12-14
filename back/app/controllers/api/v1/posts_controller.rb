@@ -10,7 +10,15 @@ module Api
 
       def show
         @user = User.find(@post.user_id)
-        render json: {post: @post, user: @user }
+        @categories = @post.posts_category.map do |posts_category|
+          posts_category.category.name
+        end
+
+        render json: {
+          post: @post,
+          user: @user,
+          categories: @categories
+        }
       end
 
       private

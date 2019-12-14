@@ -38,7 +38,8 @@ export default {
       error: null,
       form: {
         title: "",
-        body: ""
+        body: "",
+        category_ids: [1, 2, 3]
       }
     }
   },
