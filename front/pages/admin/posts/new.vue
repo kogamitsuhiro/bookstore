@@ -47,7 +47,7 @@ export default {
       this.$axios
       .$post('/api/api/v1/admin_posts', this.form)
       .then(
-        this.$router.push("/admin/admin_posts")
+        this.$router.push("/admin/posts")
       )
       .catch(e => {
         console.error(e)

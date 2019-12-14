@@ -14,11 +14,8 @@ module Api
       end
 
       def create
-        @post = Post.new(
-          title: params[:title],
-          body: params[:body],
-          user_id: current_user.id
-        )
+        @post = Post.new(post_params)
+        @post.user_id = current_user.id #TODO: modelで処理する方がベター
 
         if @post.save
           render json: @post, status: :created
@@ -45,7 +42,7 @@ module Api
       end
 
       def post_params
-        params.require(:post).permit(:title, :body)
+        params.require(:admin_post).permit(:title, :body)
       end
 
     end
