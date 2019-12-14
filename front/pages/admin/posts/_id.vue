@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Title:{{ title }}</h1>
+    <p>投稿者:{{ author }}</p>
     <p>Body:{{ body }}</p>
   </div>
 </template>
@@ -10,7 +11,11 @@ export default {
   asyncData({ $axios, params }) {
     return $axios.$get(`/api/api/v1/posts/${params.id}`)
       .then((res) => {
-        return { title: res.title, body: res.body }
+        return {
+          title: res.post.title,
+          body: res.post.body,
+          author: res.user.name
+        }
       })
   }
 }

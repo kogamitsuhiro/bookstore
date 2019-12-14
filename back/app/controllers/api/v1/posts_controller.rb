@@ -9,14 +9,19 @@ module Api
       end
 
       def show
-        render json: @post
+        @user = User.find(@post.user_id)
+        render json: {post: @post, user: @user }
       end
 
       def create
-        @post = Post.new(post_params)
+        @post = Post.new(
+          title: params[:title],
+          body: params[:body],
+          user_id: current_user.id
+        )
 
         if @post.save
-          render json: @post, status: :created, location: @post
+          render json: @post, status: :created
         else
           render json: @post.errors, status: :unprocessable_entity
         end

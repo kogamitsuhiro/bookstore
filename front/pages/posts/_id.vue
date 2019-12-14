@@ -10,7 +10,10 @@ export default {
   asyncData({ $axios, params }) {
     return $axios.$get(`/api/api/v1/posts/${params.id}`)
       .then((res) => {
-        return { title: res.title, body: res.body }
+        return {
+          title: res.post.title,
+          body: res.post.body
+        }
       })
   }
 }
