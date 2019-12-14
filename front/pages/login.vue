@@ -1,6 +1,26 @@
 <template>
   <div>
-    <h1>ログイン画面</h1>
+    <h1>メールアドレスでログイン</h1>
+    <p
+      v-if="error"
+      class="error"
+    >
+      {{ error }}
+    </p>
+    <p>
+      <input
+        v-model="form.email"
+        type="text"
+        placeholder="メールアドレス"
+      >
+    </p>
+    <p>
+      <input
+        v-model="form.password"
+        type="text"
+        placeholder="パスワード"
+      >
+    </p>
     <button @click="login">
       ログインする
     </button>
@@ -17,9 +37,11 @@ export default {
   },
   data() {
     return {
-      name: 'test',
-      email: 'test@example.com',
-      password: 'test'
+      error: null,
+      form: {
+        email: '',
+        password: ''
+      }
     }
   },
   methods: {
@@ -28,14 +50,14 @@ export default {
         await this.$auth.loginWith('local', {
           data: {
             auth: {
-              name: this.name,
-              email: this.email,
-              password: this.password
+              email: this.form.email,
+              password: this.form.password
             }
           }
         })
       } catch (e) {
         console.log(e)
+        this.error = "ログイン情報をお確かめ下さい。"
       }
     }
   }
