@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :posts
+      resources :admin_posts
       get '/login' => 'auth#login'
       post '/login' => 'auth#create'
       get '/logout' => 'auth#logout'

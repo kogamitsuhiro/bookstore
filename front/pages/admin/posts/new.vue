@@ -32,6 +32,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   data() {
     return {
       error: null,
@@ -44,9 +45,9 @@ export default {
   methods: {
     async createPost() {
       this.$axios
-      .$post('/api/api/v1/posts', this.form)
+      .$post('/api/api/v1/admin_posts', this.form)
       .then(
-        this.$router.push("/admin/posts")
+        this.$router.push("/admin/admin_posts")
       )
       .catch(e => {
         console.error(e)

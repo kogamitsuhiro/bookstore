@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Title:{{ title }}</h1>
+    <p>投稿者:{{ author }}</p>
     <p>Body:{{ body }}</p>
   </div>
 </template>
@@ -12,7 +13,8 @@ export default {
       .then((res) => {
         return {
           title: res.post.title,
-          body: res.post.body
+          body: res.post.body,
+          author: res.user.name
         }
       })
   }

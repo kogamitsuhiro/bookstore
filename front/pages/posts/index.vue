@@ -7,7 +7,7 @@
         :key="key"
       >
         <h2>
-          <nuxt-link :to="`/admin/posts/${post.id}`">
+          <nuxt-link :to="`/posts/${post.id}`">
             {{ post.title }}
           </nuxt-link>
         </h2>
@@ -18,9 +18,8 @@
 
 <script>
 export default {
-  middleware: 'auth',
   asyncData({ $axios }) {
-    return $axios.$get('/api/api/v1/admin_posts')
+    return $axios.$get('/api/api/v1/posts')
       .then((res) => {
         return { posts: res }
       })

@@ -8,8 +8,9 @@
 
 <script>
 export default {
+  middleware: 'auth',
   asyncData({ $axios, params }) {
-    return $axios.$get(`/api/api/v1/posts/${params.id}`)
+    return $axios.$get(`/api/api/v1/admin_posts/${params.id}`)
       .then((res) => {
         return {
           title: res.post.title,
