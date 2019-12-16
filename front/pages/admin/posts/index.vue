@@ -11,6 +11,12 @@
             {{ post.title }}
           </nuxt-link>
         </h2>
+        <button>
+          編集
+        </button>
+        <button @click="deletePost(post.id)">
+          削除
+        </button>
       </li>
     </ul>
   </div>
@@ -24,6 +30,20 @@ export default {
       .then((res) => {
         return { posts: res }
       })
+  },
+  methods: {
+    async deletePost(id) {
+      this.$axios
+      .$delete(`/api/api/v1/admin_posts/${id}`)
+      .then(
+        this.posts = this.posts.filter( post => {
+          return post.id != id;
+        })
+      )
+      .catch(e => {
+        console.error(e)
+      })
+    }
   }
 }
 </script>
