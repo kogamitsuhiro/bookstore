@@ -11,7 +11,7 @@ module Api
       def show
         @user = User.find(@post.user_id)
         @categories = @post.posts_category.map do |posts_category|
-          posts_category.category.name
+          posts_category.category.id
         end
 
         render json: {

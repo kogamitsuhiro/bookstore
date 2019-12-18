@@ -11,9 +11,6 @@
             {{ post.title }}
           </nuxt-link>
         </h2>
-        <button>
-          編集
-        </button>
         <button @click="deletePost(post.id)">
           削除
         </button>
@@ -47,3 +44,9 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+li {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
