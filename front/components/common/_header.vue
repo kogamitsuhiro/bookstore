@@ -7,9 +7,62 @@
           mini book store
         </nuxt-link>
       </h1>
+      <nav>
+        <div v-if="loggedIn">
+          <a
+            class="toLogin"
+            @click.prevent
+            @click="logout()"
+          >
+            ログアウト
+          </a>
+          <HeaderBtn
+            label="管理画面TOP"
+            link="admin"
+          />
+        </div>
+        <div v-else>
+          <nuxt-link
+            to="/login"
+            class="toLogin"
+          >
+            ログイン
+          </nuxt-link>
+          <HeaderBtn
+            label="新規登録"
+            link="singup"
+          />
+        </div>
+      </nav>
     </div>
   </header>
 </template>
+<script>
+import HeaderBtn from '~/components/atoms/headerBtn.vue'
+export default {
+  components: {
+    HeaderBtn
+  },
+  computed: {
+    loggedIn() {
+      return this.$auth.loggedIn
+    },
+    loginUserName() {
+      return this.$auth.user.name
+    }
+  },
+  methods: {
+    async logout() {
+      try {
+        await this.$auth.logout()
+        this.$router.push('/')
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 header {
   position: absolute;
@@ -38,6 +91,12 @@ a {
   &:hover {
     text-decoration: none;
   }
+}
+.toLogin {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 200;
+  color: $color-gray;
 }
 
 </style>
