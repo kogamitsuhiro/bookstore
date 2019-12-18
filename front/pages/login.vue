@@ -11,18 +11,21 @@
       <div class="space-bottom-1">
         <input
           v-model="form.email"
-          type="text"
+          type="mail"
           placeholder="メールアドレス"
         >
       </div>
       <div class="space-bottom-1">
         <input
           v-model="form.password"
-          type="text"
+          type="password"
           placeholder="パスワード"
         >
       </div>
-      <LoginBtn label="ログイン" />
+      <LoginBtn
+        label="ログイン"
+        :is-push="isPush"
+      />
       <div class="space-bottom-1 txt-link">
         <nuxt-link to="/singup">
           会員登録はこちら
@@ -51,6 +54,11 @@ export default {
         email: '',
         password: ''
       }
+    }
+  },
+  computed: {
+    isPush() {
+      return !this.form.email || !this.form.password
     }
   },
   methods: {

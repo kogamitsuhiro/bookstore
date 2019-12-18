@@ -36,7 +36,10 @@
           placeholder="確認用パスワード"
         >
       </div>
-      <LoginBtn label="登録する(無料)" />
+      <LoginBtn
+        label="登録する(無料)"
+        :is-push="isPush"
+      />
       <div class="space-bottom-1 txt-link">
         <nuxt-link to="/login">
           ログインはこちら
@@ -61,6 +64,11 @@ export default {
         password: "",
         password_confirmation: ""
       }
+    }
+  },
+  computed: {
+    isPush() {
+      return !this.form.name || !this.form.email || !this.form.password || !this.form.password_confirmation
     }
   },
   methods: {

@@ -1,6 +1,9 @@
 <template>
   <div class="signup-btn">
-    <button type="submit">
+    <button
+      type="submit"
+      :disabled="isPush"
+    >
       {{ label }}
     </button>
   </div>
@@ -12,6 +15,11 @@ export default {
       type: String,
       dafault: '',
       required: true,
+    },
+    isPush: {
+      type: Boolean,
+      default: true,
+      required: true
     }
   }
 }
@@ -30,6 +38,9 @@ export default {
     color: $color-white;
     border-radius: 4px;
     font-size: 12px;
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 }
 </style>
