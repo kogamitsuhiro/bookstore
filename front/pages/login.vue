@@ -1,39 +1,48 @@
 <template>
-  <div>
-    <h1>メールアドレスでログイン</h1>
-    <p
-      v-if="error"
-      class="error"
-    >
-      {{ error }}
-    </p>
-    <p>
-      <input
-        v-model="form.email"
-        type="text"
-        placeholder="メールアドレス"
+  <div class="register-container">
+    <h2>ログイン</h2>
+    <form @submit.prevent="login">
+      <div
+        v-if="error"
+        class="error"
       >
-    </p>
-    <p>
-      <input
-        v-model="form.password"
-        type="text"
-        placeholder="パスワード"
-      >
-    </p>
-    <button @click="login">
-      ログインする
-    </button>
+        {{ error }}
+      </div>
+      <div class="space-bottom-1">
+        <input
+          v-model="form.email"
+          type="text"
+          placeholder="メールアドレス"
+        >
+      </div>
+      <div class="space-bottom-1">
+        <input
+          v-model="form.password"
+          type="text"
+          placeholder="パスワード"
+        >
+      </div>
+      <LoginBtn label="ログイン" />
+      <div class="space-bottom-1 txt-link">
+        <nuxt-link to="/singup">
+          会員登録はこちら
+        </nuxt-link>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
+import LoginBtn from '~/components/atoms/loginBtn.vue'
 export default {
   middleware({ store, redirect }) {
     console.log(store.state.auth.loggedIn)
     if (store.state.auth.loggedIn) {
       return redirect('/')
     }
+  },
+  components: {
+    LoginBtn
   },
   data() {
     return {

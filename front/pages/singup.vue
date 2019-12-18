@@ -1,51 +1,57 @@
 <template>
-  <div class="signup-form">
+  <div class="register-container">
+    <h2>アカウント作成</h2>
     <form @submit.prevent="registration">
-      <p
+      <div
         v-if="error"
         class="error"
       >
         {{ error }}
-      </p>
-      <p>
+      </div>
+      <div class="space-bottom-1">
         <input
           v-model="form.name"
           type="text"
           placeholder="お名前"
         >
-      </p>
-      <p>
+      </div>
+      <div class="space-bottom-1">
         <input
           v-model="form.email"
           type="text"
           placeholder="メールアドレス"
         >
-      </p>
-      <p>
+      </div>
+      <div class="space-bottom-1">
         <input
           v-model="form.password"
           type="text"
           placeholder="パスワード"
         >
-      </p>
-      <p>
+      </div>
+      <div class="space-bottom-1">
         <input
           v-model="form.password_confirmation"
           type="text"
           placeholder="確認用パスワード"
         >
-      </p>
-      <div class="signup-btn">
-        <button type="submit">
-          登録する(無料)
-        </button>
+      </div>
+      <LoginBtn label="登録する(無料)" />
+      <div class="space-bottom-1 txt-link">
+        <nuxt-link to="/login">
+          ログインはこちら
+        </nuxt-link>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import LoginBtn from '~/components/atoms/loginBtn.vue'
 export default {
+  components: {
+    LoginBtn
+  },
   data() {
     return {
       error: null,
