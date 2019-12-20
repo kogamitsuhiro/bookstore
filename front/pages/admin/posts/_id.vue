@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>投稿の編集</h2>
     <form @submit.prevent="updatePost">
       <p
         v-if="error"

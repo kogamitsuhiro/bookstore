@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1>投稿一覧</h1>
+    <h2>みんなの本一覧</h2>
     <ul>
       <li
         v-for="(post, key) in posts"
         :key="key"
       >
-        <h2>
+        <p>
           <nuxt-link :to="`/posts/${post.id}`">
             {{ post.title }}
           </nuxt-link>
-        </h2>
+        </p>
       </li>
     </ul>
   </div>

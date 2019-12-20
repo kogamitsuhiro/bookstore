@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1>投稿一覧</h1>
+    <h2>投稿一覧</h2>
     <ul>
       <li
         v-for="(post, key) in posts"
         :key="key"
       >
-        <h2>
+        <p>
           <nuxt-link :to="`/admin/posts/${post.id}`">
             {{ post.title }}
           </nuxt-link>
-        </h2>
+        </p>
         <button @click="deletePost(post.id)">
           削除
         </button>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h1>カテゴリー一覧</h1>
+    <h2>カテゴリー</h2>
     <ul>
       <li
         v-for="(category, key) in categories"
         :key="key"
       >
-        <h2>
+        <p>
           {{ category.name }}
-        </h2>
+        </p>
       </li>
     </ul>
 

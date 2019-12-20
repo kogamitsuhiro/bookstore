@@ -11,28 +11,28 @@
       <div class="space-bottom-1">
         <input
           v-model="form.name"
-          type="text"
+          type="name"
           placeholder="お名前"
         >
       </div>
       <div class="space-bottom-1">
         <input
           v-model="form.email"
-          type="text"
+          type="mail"
           placeholder="メールアドレス"
         >
       </div>
       <div class="space-bottom-1">
         <input
           v-model="form.password"
-          type="text"
+          type="password"
           placeholder="パスワード"
         >
       </div>
       <div class="space-bottom-1">
         <input
           v-model="form.password_confirmation"
-          type="text"
+          type="password"
           placeholder="確認用パスワード"
         >
       </div>
