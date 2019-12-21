@@ -16,7 +16,7 @@ module Api
 
         render json: {
           post: @post,
-          user: @user,
+          user: response_fields(@user.to_json),
           categories: @categories
         }
       end
@@ -24,6 +24,11 @@ module Api
       private
         def set_post
           @post = Post.find(params[:id])
+        end
+
+        def response_fields(user_json)
+          user_parse = JSON.parse(user_json)
+          user_parse.except('email', 'created_at', 'updated_at', 'password', 'password_digest')
         end
 
     end
